@@ -1,0 +1,22 @@
+sandbox:
+  enabled: true
+
+# Sandbox uses introspection to obtain your router's schema.
+supergraph:
+  introspection: true
+  path: /api
+  listen: 0.0.0.0:1401
+
+include_subgraph_errors:
+    all: true
+
+# Sandbox requires the default landing page to be disabled.
+homepage:
+  enabled: false
+
+cors:
+  allow_any_origin: true
+
+# override_subgraph_url:
+#   users: http://localhost:4000
+  #products: http://localhost:4001

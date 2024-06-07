@@ -1,0 +1,37 @@
+scalar _FieldSet
+scalar _Any
+type User {
+  id: ID!
+  username: String
+  product: Product
+}
+type Product {
+  productId: Int!
+  upc: String!
+  name: String
+  price: Int
+  weight: Int
+}
+type Query {
+  me: User
+  users: [User]
+  usersId: User
+  topUserProducts(first: Int = 5): [Product]
+  _entities(representations: [_Any!]!): [_Entity]!
+  _service: _Service!
+}
+type _Service {
+  sdl: String
+}
+union _Entity = Product | User
+directive @key(fields: _FieldSet!, resolvable: Boolean = true) on OBJECT | INTERFACE
+directive @requires(fields: _FieldSet!) on FIELD_DEFINITION
+directive @provides(fields: _FieldSet!) on FIELD_DEFINITION
+directive @external(reason: String) on OBJECT | FIELD_DEFINITION
+directive @tag(name: String!) on FIELD_DEFINITION | OBJECT | INTERFACE | UNION | ARGUMENT_DEFINITION | SCALAR | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+directive @extends on OBJECT | INTERFACE
+"Exposes a URL that specifies the behavior of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behavior of this scalar."
+    url: String!
+  ) on SCALAR

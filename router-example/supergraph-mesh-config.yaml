@@ -1,0 +1,22 @@
+sources:
+  - name: Supergraph
+    handler:
+      graphql:
+        source: ./supergraph-mesh.graphql
+        subgraphs:
+          - name: users
+            endpoint: http://localhost:4000
+
+subgraphs:
+  users:
+    routing_url: http://localhost:4000/graphql
+    schema:
+      file: ./schema/user-schema.graphql
+
+
+sources:
+  - name: users
+    handler:
+      graphql:
+        endpoint: http://localhost:4000
+

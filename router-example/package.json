@@ -1,0 +1,39 @@
+{
+  "name": "router-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start-user": "nodemon users/index.js",
+    "start-p": "nodemon products/index.js",
+    "start-product": "nodemon products-monolith/index.js",
+    "start-all": "nodemon users/index.js && nodemon products/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/federation": "0.38.1",
+    "@apollo/gateway": "^2.8.0",
+    "@apollo/server": "4.10.0",
+    "@apollo/subgraph": "2.7.1",
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/introspection": "^4.0.3",
+    "@graphql-codegen/schema-ast": "^4.0.2",
+    "@graphql-mesh/cli": "^0.90.9",
+    "@graphql-mesh/graphql": "^0.98.7",
+    "@graphql-mesh/supergraph": "^0.4.7",
+    "@graphql-tools/schema": "10.0.2",
+    "@graphql-tools/stitch": "^9.2.9",
+    "@graphql-tools/utils": "10.0.13",
+    "apollo-client": "2.6.10",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "graphql": "16.8.1"
+  },
+  "devDependencies": {
+    "@apollo/generate-persisted-query-manifest": "^1.1.0",
+    "@graphql-hive/cli": "^0.38.2",
+    "nodemon": "^3.0.3"
+  }
+}

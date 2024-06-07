@@ -1,0 +1,69 @@
+directive @composeDirective(name: String!) repeatable on SCHEMA
+
+directive @extends on INTERFACE | OBJECT
+
+directive @external(reason: String) on FIELD_DEFINITION | OBJECT
+
+directive @inaccessible on ARGUMENT_DEFINITION | ENUM | ENUM_VALUE | FIELD_DEFINITION | INPUT_FIELD_DEFINITION | INPUT_OBJECT | INTERFACE | OBJECT | SCALAR | UNION
+
+directive @key(fields: _FieldSet!, resolvable: Boolean = true) repeatable on INTERFACE | OBJECT
+
+directive @link(as: String, for: link__Purpose, import: [link__Import], url: String!) repeatable on SCHEMA
+
+directive @override(from: String!) on FIELD_DEFINITION
+
+directive @provides(fields: _FieldSet!) on FIELD_DEFINITION
+
+directive @requires(fields: _FieldSet!) on FIELD_DEFINITION
+
+directive @shareable repeatable on FIELD_DEFINITION | OBJECT
+
+directive @tag(name: String!) repeatable on ARGUMENT_DEFINITION | ENUM | ENUM_VALUE | FIELD_DEFINITION | INPUT_FIELD_DEFINITION | INPUT_OBJECT | INTERFACE | OBJECT | SCALAR | UNION
+
+type Product {
+  name: String
+  price: Int
+  productId: Int!
+  upc: String!
+  weight: Int
+}
+
+type ProductM {
+  name: String
+  price: Int
+  upc: String!
+  weight: Int
+}
+
+type Query {
+  _entities(representations: [_Any!]!): [_Entity]!
+  _service: _Service!
+  me: User
+  topProducts(first: Int = 5): [ProductM]
+  topUserProducts(first: Int = 5): [Product]
+  users: [User]
+  usersId: User
+}
+
+type User {
+  id: ID!
+  product: Product
+  username: String
+}
+
+scalar _Any
+
+union _Entity = Product | ProductM | User
+
+scalar _FieldSet
+
+type _Service {
+  sdl: String
+}
+
+scalar link__Import
+
+enum link__Purpose {
+  EXECUTION
+  SECURITY
+}

@@ -1,0 +1,6 @@
+overwrite: true
+schema: .mesh/schema.graphql
+generates:
+  ./supergraph-schema.graphql:
+    plugins:
+      - schema-ast
